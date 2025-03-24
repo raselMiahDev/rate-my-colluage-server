@@ -24,7 +24,11 @@
     "version:inc": "npm version patch --no-git-tag-version && git add .",
     "all:update": "pnpm update -i -L"
   },
-  "keywords": ["express","typescript","mysql2"],
+  "keywords": [
+    "express",
+    "typescript",
+    "mysql2"
+  ],
   "author": "Md Rasel Miah",
   "license": "ISC",
   "dependencies": {
@@ -47,6 +51,8 @@
     "mysql2": "3.9.2",
     "nodemailer": "6.9.11",
     "otp-generator": "4.0.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "pdfmake": "0.2.9",
     "rate-limit-redis": "4.2.0",
     "socket.io": "4.7.4",

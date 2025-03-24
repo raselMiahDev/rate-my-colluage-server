@@ -1,13 +1,19 @@
 import { Request, Response } from 'express';
-import pool from '../../config/db/database';
+import { UserService } from './user.service';
+import { ICreateUser } from '../../config/db/schema/user.schema';
+import { db } from '../../config/db/db';
 export const UserController = {
-
-    getUsers: async (req: Request, res: Response) => {
+    createUser: async (req: Request, res: Response) => {
         try {
-            const [rows] = await pool.query('SELECT * FROM basicinfo');
-            res.json(rows);
+            const user = await UserService.createUser(req.body as ICreateUser, db);
+            res.status(201).json({ message: "User Create Success", id: user });
         } catch (err) {
-            res.status(500).json({ message: "error" });
+            if (err instanceof Error) {
+                res.status(500).json({ error: err.message });
+            } else {
+                res.status(500).json({ error: 'An unknown error occurred' });
+            }
         }
     }
+
 }

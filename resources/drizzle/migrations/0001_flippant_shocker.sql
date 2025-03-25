@@ -1,1 +1,0 @@
-ALTER TABLE `user_submissions` MODIFY COLUMN `user_id` varchar(50);

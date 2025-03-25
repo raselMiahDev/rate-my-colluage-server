@@ -1,7 +1,8 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { UserService } from './user.service';
 import { ICreateUser } from '../../config/db/schema/user.schema';
 import { db } from '../../config/db/db';
+import { IUpdateUserDto } from './dto/user.dto';
 export const UserController = {
     createUser: async (req: Request, res: Response) => {
         try {
@@ -14,6 +15,15 @@ export const UserController = {
                 res.status(500).json({ error: 'An unknown error occurred' });
             }
         }
+    },
+    updateUser: async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const userID = req.params.id;
+            const { name, email, avatar, password } = req.body as IUpdateUserDto
+            await UserService.updateUser(userID, { name, email, avatar, password });
+            res.status(200).json({ message: "User Update Success" });
+        } catch (err) {
+            return next(err);
+        }
     }
-
 }

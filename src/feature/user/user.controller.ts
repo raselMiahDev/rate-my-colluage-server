@@ -6,7 +6,7 @@ import { IUpdateUserDto } from './dto/user.dto';
 export const UserController = {
     createUser: async (req: Request, res: Response) => {
         try {
-            const user = await UserService.createUser(req.body as ICreateUser, db);
+            const user = await UserService.createUser(req.body as ICreateUser, res, db);
             res.status(201).json({ message: "User Create Success", id: user });
         } catch (err) {
             if (err instanceof Error) {

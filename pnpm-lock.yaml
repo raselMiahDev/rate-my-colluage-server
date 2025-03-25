@@ -53,6 +53,9 @@ dependencies:
   ioredis:
     specifier: 5.3.2
     version: 5.3.2
+  jsonwebtoken:
+    specifier: ^9.0.2
+    version: 9.0.2
   multer:
     specifier: 1.4.5-lts.1
     version: 1.4.5-lts.1
@@ -112,6 +115,9 @@ devDependencies:
   '@types/express':
     specifier: 4.17.21
     version: 4.17.21
+  '@types/jsonwebtoken':
+    specifier: ^9.0.9
+    version: 9.0.9
   '@types/node':
     specifier: 18.16.3
     version: 18.16.3
@@ -1632,7 +1638,6 @@ packages:
     dependencies:
       '@types/ms': 2.1.0
       '@types/node': 18.16.3
-    dev: false
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
@@ -1649,7 +1654,6 @@ packages:
 
   /@types/ms@2.1.0:
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
-    dev: false
 
   /@types/multer@1.4.12:
     resolution: {integrity: sha512-pQ2hoqvXiJt2FP9WQVLPRO+AmiIm/ZYkavPlIQnx282u4ZrVdztx0pkh3jjpQt0Kz+YI0YhSG264y08UJKoUQg==}

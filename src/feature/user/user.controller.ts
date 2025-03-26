@@ -10,7 +10,7 @@ export const UserController = {
             res.status(201).json({ message: "User Create Success", id: user });
         } catch (err) {
             if (err instanceof Error) {
-                res.status(500).json({ error: err.message });
+                res.status(500).json({ error: err instanceof Error ? err.message : 'An unknown error occurred' });
             } else {
                 res.status(500).json({ error: 'An unknown error occurred' });
             }
@@ -24,6 +24,14 @@ export const UserController = {
             res.status(200).json({ message: "User Update Success" });
         } catch (err) {
             return next(err);
+        }
+    },
+    getAllUsers: async (req: Request, res: Response) => {
+        try {
+            const users = await UserService.getAllUsers();
+            res.status(200).json(users);
+        } catch (err) {
+            res.status(500).json({ error: 'An unknown error occurred' });
         }
     }
 }

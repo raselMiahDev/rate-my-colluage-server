@@ -52,7 +52,7 @@ export const UserService = {
         if (!process.env.SECRET_KEY) {
             throw new Error("SECRET_KEY is not defined in environment variables");
         }
-        const token = jwt.sign({ id: uid, email: body.email }, process.env.SECRET_KEY, { expiresIn: "1h" });
+        const token = jwt.sign({ id: uid, email: body.email }, process.env.SECRET_KEY, { expiresIn: "7h" });
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // Enable secure flag in production
@@ -69,5 +69,9 @@ export const UserService = {
         }).where(eq(UserSchema.id, id))
         const user = (await UserService.getUserByIdentifier("id", id)) as IUserNoPassword
         return user
+    },
+    getAllUsers: async () => {
+        const users = await db.query.UserSchema.findMany().prepare().execute();
+        return users;
     }
 }

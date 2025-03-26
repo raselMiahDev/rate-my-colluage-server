@@ -73,5 +73,11 @@ export const UserService = {
     getAllUsers: async () => {
         const users = await db.query.UserSchema.findMany().prepare().execute();
         return users;
+    },
+    getUserById: async (id: string) => {
+        const user = await db.query.UserSchema.findFirst({
+            where: eq(UserSchema.id, id)
+        }).prepare().execute();
+        return user;
     }
 }

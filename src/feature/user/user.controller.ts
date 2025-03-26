@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { ICreateUser } from '../../config/db/schema/user.schema';
 import { db } from '../../config/db/db';
 import { IUpdateUserDto } from './dto/user.dto';
+import { MyResponse } from '../../utils/my-response.util';
 export const UserController = {
     createUser: async (req: Request, res: Response) => {
         try {
@@ -33,5 +34,13 @@ export const UserController = {
         } catch (err) {
             res.status(500).json({ error: 'An unknown error occurred' });
         }
-    }
+    },
+    getUserById: async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const user = await UserService.getUserById(req.params.id);
+            res.status(200).json(user);
+        } catch (err) {
+            return next(err);
+        }
+    },
 }

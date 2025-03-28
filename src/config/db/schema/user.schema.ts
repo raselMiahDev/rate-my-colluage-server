@@ -1,6 +1,5 @@
 import { timestamp, mysqlTable, varchar } from "drizzle-orm/mysql-core"
 import { sql } from 'drizzle-orm';
-import e from "express";
 
 export const UserSchema = mysqlTable("user_table", {
     id: varchar("id", { length: 255 }).primaryKey(),

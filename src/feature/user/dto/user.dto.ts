@@ -7,6 +7,7 @@ export const CreateUserDto = z.object({
     name: ZodNameString.min(3).max(200),
     email: ZodEmailString,
     avatar: ZodSimpleString,
+    created_at: z.date()
 });
 
 export type ICreateUserDto = z.infer<typeof CreateUserDto>;

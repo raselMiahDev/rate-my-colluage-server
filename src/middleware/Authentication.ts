@@ -23,7 +23,6 @@ export const Authentication = (req: AuthRequest, res: Response, next: NextFuncti
 
     try {
         const secretKey = process.env.SECRET_KEY;
-        console.log(secretKey);
         if (!secretKey) {
             throw new Error("JWT_SECRET is not defined");
         }

@@ -3,7 +3,6 @@ import { UserService } from './user.service';
 import { ICreateUser } from '../../config/db/schema/user.schema';
 import { db } from '../../config/db/db';
 import { IUpdateUserDto } from './dto/user.dto';
-import { MyResponse } from '../../utils/my-response.util';
 export const UserController = {
     createUser: async (req: Request, res: Response) => {
         try {

@@ -1,7 +1,7 @@
-import { Response as ExpressResponse, Request } from 'express';
+import { Response as ExpressResponse } from 'express';
 import { UserProfileService } from './user-profile.service';
 import { ICreateUserProfile } from '../../config/db/schema/user-profile.schema';
-import { AuthenticatedRequest } from '../../types/user.typs';
+import { AuthenticatedRequest, RequestBody } from '../../types/user.typs';
 import { db } from '../../config/db/db';
 export const UserProfileController = {
     createUserProfile: async (req: AuthenticatedRequest, res: ExpressResponse) => {
@@ -9,8 +9,7 @@ export const UserProfileController = {
             const { id: user_id } = req.user; // Assuming req.user contains the authenticated user's ID
             const { name, currentCompany, currentDesignation, pastCompany, pastDesignation, agree
 
-            } = req.body as unknown as { name: string; currentCompany: string; currentDesignation: string; pastCompany: string; pastDesignation: string; agree: string; };
-
+            } = req.body as unknown as RequestBody
             if (!name || !currentCompany || !currentDesignation || !pastCompany || !pastDesignation || !agree) {
                 return res.status(400).json({ message: 'Name, currentCompany, currentDesignation, pastCompany, pastDesignation and agree are required' });
             }
@@ -35,5 +34,5 @@ export const UserProfileController = {
                 res.status(500).json({ error: "An unknown error occurred" });
             }
         }
-    }
+    },
 }

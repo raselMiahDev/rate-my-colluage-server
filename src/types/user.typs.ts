@@ -10,3 +10,12 @@ export interface ICreateSocialLink {
     icon: string;
     user_id: string;
 }
+
+export interface RequestBody {
+    name: string;
+    currentCompany: string;
+    currentDesignation: string;
+    pastCompany: string;
+    pastDesignation: string;
+    agree: string;
+}

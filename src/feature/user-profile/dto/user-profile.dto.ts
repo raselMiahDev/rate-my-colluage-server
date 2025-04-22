@@ -25,4 +25,4 @@ export const UpdateUserProfileDto = UserProfileDto.extend({
     message: "At least one field must be updated"
 })
 
-export type IUpdateUserProfileDto = z.infer<typeof UpdateUserProfileDto>;
+export type IUpdateUserProfileDto = z.infer<typeof CreateUserProfileDto>;

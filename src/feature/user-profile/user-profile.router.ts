@@ -9,5 +9,7 @@ UserProfileRouter.post(
     Authentication as RequestHandler,
     (UserProfileController.createUserProfile as unknown) as RequestHandler
 );
+UserProfileRouter.get("/get-user-profile/:id", Authentication as RequestHandler, (UserProfileController.getUserProfile));
+//UserProfileRouter.put("/update-profile/:id", Authentication, UserProfileController.updateUserProfile)
 
 export default UserProfileRouter;

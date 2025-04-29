@@ -1,4 +1,4 @@
-import { Response as ExpressResponse } from 'express';
+import { Response as ExpressResponse, Request } from 'express';
 import { UserProfileService } from './user-profile.service';
 import { ICreateUserProfile } from '../../config/db/schema/user-profile.schema';
 import { AuthenticatedRequest, RequestBody } from '../../types/user.typs';
@@ -33,6 +33,15 @@ export const UserProfileController = {
             } else {
                 res.status(500).json({ error: "An unknown error occurred" });
             }
+        }
+    },
+    getUserProfile: async (req: Request, res: ExpressResponse) => {
+        try {
+            const id = req.params.id;
+            const userProfile = await UserProfileService.getUserProfile(id);
+            res.status(200).json(userProfile);
+        } catch (err) {
+            return err
         }
     },
 }
